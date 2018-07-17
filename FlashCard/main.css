@@ -2,14 +2,54 @@
 
     text-align: center;
     background-color:#cdf4e7;
+    
 }
+
+img {
+    width:100%;
+}
+
+#myTitleContainer {
+    background-image: url("content/TitleFlashCard.jpg");
+    background-repeat: no-repeat;
+
+    text-wrap:normal;
+    width:400px;
+    height:auto;
+    padding:130px 90px 60px 0px;
+    position:relative;
+    left:20vw;
+}
+
+#myTitle {
+    position:relative;
+    top: 22px;
+    left: 60px;
+
+}
+
+#author {
+    position:relative;
+    left: 170px;
+    top: 40px;
+}
+
+.questionCard {
+    /*background-image: url("content/questionFlashCard.jpg");*/
+    /*background-repeat: no-repeat;*/
+
+    /*padding: 200px;*/
+
+}
+
 
 
 .btnMainMenu {
-    margin:1vh 0;
+    margin:1vh 0px;
     padding:10px 10px;
 }
 
-#rblAnswers, #loadDeckmenu{
+#rblAnswers, #myDeck{
+    text-align: center;
     width:100%;
 }

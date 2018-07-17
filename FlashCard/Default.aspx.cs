@@ -5,19 +5,30 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
+//TODO: Implement Action when timer reaches zero
+//TODO: Implement subject changing when loading different flashcard decks <-- get questions
+//TODO: Style the program using CSS + get an actual timer clock that ticks down
+//TODO: Attempt the further work somehow keeping track of data using session and view
+//TODO: keep track of score
 public partial class _Default : System.Web.UI.Page
 {
     public qa[] qaDatabase = new qa[] {
-                new qa("Define Alogrithm", "Set of ordered and finite steps to solve a given problem"),
+                new qa("What is an Alogrithm?", "It is a set of ordered and finite steps used to solve a given problem"),
                 new qa("Define AJAX", "Used to retrieve and process information without needing to reload the browser", "Asynchronous Javascript And XML"),
-                new qa("What are the 3 main programming languages in front end development?", "HTML, CSS and Javascript"),
                 new qa("Define JSON", "Used to convert any javascript object into text and vice versa, allowing communication between browser and server", "JavaScript Object Notation"),
-                new qa("Is C# front end or Back end?", "Back end"),
-                new qa("Name the 7 Development Lifecycles", "Planning, Analysis, Design, Implementation, Testing and Intergration, Maintenance"),
                 new qa("Define the DOM in HTML/CSS", "It defines the logical structure of documents and the way a document is accessed and manipulated", "Document Object Model"),
-                new qa("Describe the basic HTML code strucutre", @"<!doctype HTML> \n <HTML> \n <head></head> \n <body></body> \n </HTML>"),
-                new qa("List some of the c# error handling exceptions","FileNotFoundException \n IndexOutOfRangeException \n ArgumentException \n DivideByZero \n FormatException")
+                new qa("What is ASP.Net?","It is a program which allow you to create dynamic website using the .Net framework", "Active Server Page"),
+                new qa("Explain the function of the HTML, CSS and Javascript in front end programming", "Adds content to the website, styles the content and adds functionality to the content"),
+                new qa("Define Progressive Enchancement", "Layering technologies sequentially so that they work without reliance upon each other"),
+                new qa("Define a variable", "It is used to store information in a memory address to be referenced and manipulated in a computer program")
+                //new qa("Name the 7 Development Lifecycles", "Planning, Analysis, Design, Implementation, Testing and Intergration, Maintenance"),
+                //new qa("Is C# front end or Back end?", "Back end"),
+                //new qa("Describe the basic HTML code strucutre", @"<!doctype HTML> \n <HTML> \n <head></head> \n <body></body> \n </HTML>"),
+                //new qa("List some of the c# error handling exceptions","FileNotFoundException \n IndexOutOfRangeException \n ArgumentException \n DivideByZero \n FormatException")
     };
+
+
 
     public Random rng = new Random();
 
@@ -63,6 +74,7 @@ public partial class _Default : System.Web.UI.Page
             lblQuestion.Text = "Press Start to Begin";
             rblAnswers.Visible = false;
             Session["quizCntr"] = -1;
+            tmrlblQuiz.Text = "Timer";
         }
 
     }
@@ -151,7 +163,7 @@ public partial class _Default : System.Web.UI.Page
 
         do
         {
-            otherID = rng.Next(0, qaDatabase.Length - 1);
+            otherID = rng.Next(0, qaDatabase.Length);
         } while (otherID == notThisOne || 
                  otherID == orThisOne  || 
                  otherID == norThisOne ||
@@ -170,7 +182,7 @@ public partial class _Default : System.Web.UI.Page
         if (Session["ID"] == null) { Session["ID"] = -1; }
        
         do{
-            ID = rng.Next(0, qaDatabase.Length - 1);
+            ID = rng.Next(0, qaDatabase.Length);
         } while (ID == (int) Session["ID"]);
         
 
@@ -183,10 +195,18 @@ public partial class _Default : System.Web.UI.Page
     //Quiz: counter down timer
     protected void Timer1_Tick(object sender, EventArgs e)
     {
-        if (Convert.ToInt32(Session["quizCntr"]) >= 0)
+        int tick = Convert.ToInt32(Session["quizCntr"]);
+
+        if ( tick > 0)
         {
-            tmrlblQuiz.Text = Convert.ToString(Session["quizCntr"]);
-            Session["quizCntr"] = Convert.ToInt32(Session["quizCntr"]) - 1;
+            tmrlblQuiz.Text = Convert.ToString(tick);
+            Session["quizCntr"] = tick - 1;
+        }
+        else if (tick == 0)
+        {
+            tmrlblQuiz.Text = Convert.ToString(tick);
+            Testlabel.Text = "QUIZ IS DONE";
+            Session["quizCntr"] = tick - 1;
         }
 
     }
@@ -200,6 +220,11 @@ public partial class _Default : System.Web.UI.Page
         }else
         {
             myDeck.Visible = true;
+        }
+
+        if (myDeck.SelectedIndex == -1)
+        {
+            myDeck.SelectedIndex = 0;
         }
     }
 }
