@@ -1,0 +1,15 @@
+﻿body {
+
+    text-align: center;
+    background-color:#cdf4e7;
+}
+
+
+.btnMainMenu {
+    margin:1vh 0;
+    padding:10px 10px;
+}
+
+#rblAnswers, #loadDeckmenu{
+    width:100%;
+}
