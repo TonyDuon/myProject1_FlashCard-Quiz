@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 
 //TODO: Implement Action when timer reaches zero
-//TODO: Implement subject changing when loading different flashcard decks <-- get questions
+//TODO: Implement subject changing when loading different flashcard decks <-- need to get questions first 
 //TODO: Style the program using CSS + get an actual timer clock that ticks down
 //TODO: Attempt the further work somehow keeping track of data using session and view
 //TODO: keep track of score
@@ -111,6 +111,7 @@ public partial class _Default : System.Web.UI.Page
             btnSubmitAnswer.Text = "Submit";
             rblAnswers.Visible = true;
             Session["quizCntr"] = 60;
+            Timer1.Enabled = true;
             generateQuizQuestion();
         }
         else if(btnSubmitAnswer.Text == "Submit")
@@ -202,11 +203,12 @@ public partial class _Default : System.Web.UI.Page
             tmrlblQuiz.Text = Convert.ToString(tick);
             Session["quizCntr"] = tick - 1;
         }
-        else if (tick == 0)
+        else if (tick <= 0)
         {
             tmrlblQuiz.Text = Convert.ToString(tick);
             Testlabel.Text = "QUIZ IS DONE";
-            Session["quizCntr"] = tick - 1;
+            Session["quizCntr"] = - 1;
+            Timer1.Enabled = false;
         }
 
     }

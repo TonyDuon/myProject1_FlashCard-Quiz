@@ -1,37 +1,41 @@
 ﻿body {
 
     text-align: center;
-    background-color:#cdf4e7;
+    /*background-image: url("/content/blackboard-slate.jpg");*/
+    background-repeat: no-repeat;
     
 }
 
-img {
-    width:100%;
-}
-
 #myTitleContainer {
-    background-image: url("content/TitleFlashCard.jpg");
+    background-image: url("/content/TitleFlashCard.jpg");
     background-repeat: no-repeat;
-
+    background-size: 100% 100%;
     text-wrap:normal;
-    width:400px;
-    height:auto;
-    padding:130px 90px 60px 0px;
+
     position:relative;
-    left:20vw;
+    
+    width:600px;
+    height:400px;
+    /*padding:130px 90px 60px 0px;*/
+    margin: 0px;
+    
+
+    left:33vw;
 }
 
 #myTitle {
     position:relative;
-    top: 22px;
-    left: 60px;
+    top: 200px;
+    left: 145px;
+
+    width: 330px;
 
 }
 
 #author {
     position:relative;
-    left: 170px;
-    top: 40px;
+    left: 150px;
+    top: 200px;
 }
 
 .questionCard {

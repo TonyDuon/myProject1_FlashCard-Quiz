@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>MyFirstProject - Tonny Duong</title>
+    <link rel="stylesheet" type="text/css" href="/content/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="main.css"/>
 </head>
 <body>
@@ -22,9 +23,9 @@
                 <p id="author">By Tonny Duong</p>
             </div>
 
-            <asp:Button ID="gotoFlashCard" runat="server" class="btnMainMenu" Text="Review" onClick="gotoFlashCard_Click" />  
-            <asp:Button ID="gotoQuiz" runat="server" class="btnMainMenu" Text="Quiz Me!" onClick="gotoQuiz_Click"/>       
-            <br/><asp:Button ID="importFile" runat="server" class="btnMainMenu" Text="Load Deck" onClick="importFile_Click"/>
+            <asp:Button ID="gotoFlashCard" runat="server" class="btnMainMenu btn btn-success" Text="Review" onClick="gotoFlashCard_Click" />  
+            <asp:Button ID="gotoQuiz" runat="server" class="btnMainMenu btn btn-success" Text="Quiz Me!" onClick="gotoQuiz_Click"/>       
+            <br/><asp:Button ID="importFile" runat="server" class="btnMainMenu btn btn-success" Text="Load Deck" onClick="importFile_Click"/>
                 <!----------------------------------------LOAD DECK START-------------------------------------->
                 <div id="loadDeckmenu">
                     <asp:RadioButtonList ID="myDeck" runat="server" Visible="false">
@@ -43,11 +44,11 @@
         <!------------------------------------------------FLASHCARD START------------------------------------------------------------->
 
         <div id="flashCardMenu" runat="server" visible="false">
-            <asp:Label ID="questionLabel" runat="server" Text="Press Generate to Begin" class="questionCard"/> <br />
-            <asp:Label ID="answerLabel" runat="server" Text="Wrong button!" /><br />
-            <asp:Button ID="showHideButton" runat="server" Text="Show\Hide Answer" onClick="showHideButton_Click"/>  
-            <asp:Button ID="generateButton" runat="server" Text="Generate"  OnClick="generateButton_Click"/>         
-            <asp:Button ID="homeButton" runat="server" Text="Home" OnClick="homeButton_Click" />     
+            <h1><asp:Label ID="questionLabel" runat="server" Text="Press Generate to Begin" class="questionCard label-large label-success label"/></h1> <br />
+            <h2><asp:Label ID="answerLabel" runat="server" Text="Wrong button!" class="label label-warning"/></h2><br />
+            <asp:Button ID="showHideButton" runat="server" Text="Show\Hide Answer" onClick="showHideButton_Click" class="btn btn-warning"/>  
+            <asp:Button ID="generateButton" runat="server" Text="Generate"  OnClick="generateButton_Click" class="btn btn-success"/>         
+            <asp:Button ID="homeButton" runat="server" Text="Home" OnClick="homeButton_Click" class="btn btn-primary"/>     
         </div>
 
         <!------------------------------------------------FLASHCARD END--------------------------------------------------------------->
